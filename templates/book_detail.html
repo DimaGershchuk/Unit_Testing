@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Detail</title>
+</head>
+<body>
+    <h1>{{ book.title }}</h1>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Publication Date:</strong> {{ book.publication_date }}</p>
+    <p><strong>Pages:</strong> {{ book.pages }}</p>
+
+    <a href="{% url 'book_update' book.id %}">Edit Book</a>
+
+    <br>
+
+    <form action="{% url 'book_delete' book.id %}" method="GET">
+        {% csrf_token %}
+        <button type="submit">Delete Book</button>
+    </form>
+    <br>
+
+    <a href="{% url 'book_list' %}">Back to Book List</a>
+</body>
+</html>
